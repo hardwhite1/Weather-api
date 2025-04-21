@@ -13,7 +13,9 @@ class WeatherController extends Controller
         $city = $request->query('city', 'Nairobi');
         $apiKey = env('OPENWEATHER_API_KEY');
 
-        $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+        $response = Http::withOptions([
+        'verify' => false //by-pass ssl certificate check
+        ])->get("https://api.openweathermap.org/data/2.5/weather", [
             'q' => $city,
             'appid' => $apiKey,
             'units' => 'metric'
