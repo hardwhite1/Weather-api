@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class WeatherController extends Controller
 {
-    
-
     public function getWeather(Request $request)
     {
         $city = $request->query('city', 'Nairobi');
